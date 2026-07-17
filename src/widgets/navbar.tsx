@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -12,9 +13,16 @@ function Logo() {
     <Link
       href="/"
       aria-label={`${site.name} home`}
-      className="flex size-9 items-center justify-center rounded-full border border-ink text-[13px] font-semibold tracking-tight text-ink"
+      className="relative flex size-10 shrink-0 overflow-hidden rounded-full border border-line bg-surface"
     >
-      {site.mark}
+      <Image
+        src={site.logoSrc}
+        alt={site.shortName}
+        width={40}
+        height={40}
+        className="object-cover"
+        priority
+      />
     </Link>
   );
 }
@@ -56,12 +64,12 @@ export function Navbar() {
 
         {/* Right: inquiry + theme toggle */}
         <div className="flex flex-1 items-center justify-end gap-3 sm:gap-5">
-          <Link
-            href={`mailto:${site.email}`}
+          <a
+            href={`mailto:${site.email}?subject=${encodeURIComponent("Inquiry — AURA: image of God")}`}
             className="hidden text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:text-ink-muted sm:inline"
           >
             Send Inquiry
-          </Link>
+          </a>
           <ThemeTogglerButton
             variant="outline"
             size="default"
@@ -90,13 +98,13 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href={`mailto:${site.email}`}
+            <a
+              href={`mailto:${site.email}?subject=${encodeURIComponent("Inquiry — AURA: image of God")}`}
               onClick={() => setOpen(false)}
               className="py-2 text-sm font-semibold uppercase tracking-widest text-ink sm:hidden"
             >
               Send Inquiry
-            </Link>
+            </a>
           </div>
         </div>
       </div>

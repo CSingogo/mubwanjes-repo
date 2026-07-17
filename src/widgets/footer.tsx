@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { AppImage } from "@/components/ui/app-image";
@@ -25,12 +26,10 @@ export function Footer() {
           loading="lazy"
           className="object-cover object-[center_58%] sm:object-[center_55%] lg:object-[center_50%]"
         />
-        {/* Fixed dark scrim — not theme-linked */}
         <div className="absolute inset-0 bg-black/65" />
       </div>
 
       <div className="relative grid min-h-[32rem] gap-10 px-6 py-16 text-white sm:min-h-[36rem] sm:px-10 md:grid-cols-3 md:items-center lg:min-h-[40rem]">
-        {/* Left: nav */}
         <nav className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-widest">
           {site.nav.map((item) => (
             <Link
@@ -41,19 +40,28 @@ export function Footer() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href={`mailto:${site.email}`}
+          <a
+            href={`mailto:${site.email}?subject=${encodeURIComponent("Inquiry — AURA: image of God")}`}
             className="transition-opacity hover:opacity-70"
           >
             Send Inquiry
-          </Link>
+          </a>
         </nav>
 
-        {/* Center: newsletter */}
         <div className="flex flex-col items-center gap-4 text-center">
-          <span className="flex size-9 items-center justify-center rounded-full border border-white/70 text-[13px] font-semibold">
-            {site.mark}
-          </span>
+          <Link
+            href="/"
+            aria-label={`${site.name} home`}
+            className="relative flex size-10 overflow-hidden rounded-full border border-white/70"
+          >
+            <Image
+              src={site.logoSrc}
+              alt={site.shortName}
+              width={40}
+              height={40}
+              className="object-cover"
+            />
+          </Link>
           <p className="max-w-xs text-lg font-semibold leading-tight text-white">
             Stay tuned for curated updates, timeless pieces.
           </p>
@@ -74,7 +82,6 @@ export function Footer() {
           </form>
         </div>
 
-        {/* Right: social */}
         <nav className="flex flex-col gap-2 text-xs font-semibold uppercase tracking-widest md:items-end">
           {site.social.map((item) => (
             <a
