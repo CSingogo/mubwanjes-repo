@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AppImage } from "@/components/ui/app-image";
 import { Reveal } from "@/components/ui/reveal";
 import { imageUrl } from "@/lib/cloudinary";
+import { formatPrice } from "@/lib/format";
 import { getFeaturedProducts } from "@/data/products";
 
 export function Signatures() {
@@ -30,7 +31,7 @@ export function Signatures() {
                   {product.name}
                 </span>
                 <span className="text-sm text-ink-muted">
-                  ${product.price}
+                  {formatPrice(product.price)}
                 </span>
               </div>
             </Link>

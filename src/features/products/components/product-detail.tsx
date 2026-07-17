@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { AppImage } from "@/components/ui/app-image";
 import type { Product } from "@/features/products/types";
 import { imageUrl } from "@/lib/cloudinary";
+import { formatPrice } from "@/lib/format";
 import { site } from "@/lib/site";
 
 function toTitle(value: string) {
@@ -69,7 +70,7 @@ export function ProductDetail({ product }: { product: Product }) {
           </h1>
           <p className="mt-3 text-lg text-ink-muted">{product.tagline}</p>
           <p className="mt-6 text-2xl font-semibold text-ink">
-            ${product.price}
+            {formatPrice(product.price)}
           </p>
 
           <p className="mt-6 max-w-prose leading-relaxed text-ink">

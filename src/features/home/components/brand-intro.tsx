@@ -11,9 +11,10 @@ export function BrandIntro() {
       </Reveal>
 
       <Reveal delay={0.1} className="mt-16 flex flex-col items-center gap-6">
-        <span className="h-16 w-px bg-line" />
+        <span className="h-16 w-px bg-accent/40" />
         <h2 className="display text-2xl text-ink sm:text-3xl">
-          Explore Our Signatures
+          Explore Our{" "}
+          <span className="text-accent">Signatures</span>
         </h2>
       </Reveal>
     </section>

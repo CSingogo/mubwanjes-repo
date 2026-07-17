@@ -42,11 +42,16 @@ export function RotatingText({
   const characters = useMemo(() => Array.from(words[index]), [words, index]);
 
   return (
-    <span className={cn("inline-flex overflow-hidden align-bottom", className)}>
+    <span
+      className={cn(
+        "inline-flex max-w-full overflow-hidden align-bottom",
+        className
+      )}
+    >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={index}
-          className="inline-flex"
+          className="inline-flex whitespace-nowrap"
           aria-label={words[index]}
         >
           {characters.map((char, i) => (

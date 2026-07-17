@@ -9,8 +9,8 @@ export function Collections() {
       className="scroll-mt-24 px-5 py-24 text-center sm:px-8 sm:py-32"
     >
       <Reveal className="flex flex-col items-center gap-6">
-        <span className="h-16 w-px bg-line" />
-        <p className="text-sm font-semibold uppercase tracking-widest text-ink">
+        <span className="h-16 w-px bg-accent/40" />
+        <p className="text-sm font-semibold uppercase tracking-widest text-accent">
           Discover Our Collections
         </p>
       </Reveal>

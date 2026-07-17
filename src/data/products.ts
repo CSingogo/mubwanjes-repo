@@ -11,7 +11,7 @@ export const products: Product[] = [
     tagline: "Our signature heavyweight in faded black.",
     description:
       "A dense, structured heavyweight tee milled from long-staple cotton. It holds its shape, drapes with weight, and softens with every wash. Cut boxy through the body with a ribbed collar built to resist stretching.",
-    price: 68,
+    price: 400,
     weightGsm: 280,
     printOptions: ["plain", "printed"],
     colors: ["Faded Black"],
@@ -27,7 +27,7 @@ export const products: Product[] = [
     tagline: "Clean bone white, 280 GSM.",
     description:
       "The same heavyweight make in a crisp off-white. A canvas for prints or worn plain — quiet, structured, and built to last.",
-    price: 68,
+    price: 400,
     weightGsm: 280,
     printOptions: ["plain", "printed"],
     colors: ["Bone", "Off-White"],
@@ -43,7 +43,7 @@ export const products: Product[] = [
     tagline: "Second look — same weight, different cut.",
     description:
       "A companion white heavyweight with a slightly longer body. Same mill, same finish — made to order, plain or printed.",
-    price: 68,
+    price: 400,
     weightGsm: 280,
     printOptions: ["plain", "printed"],
     colors: ["Bone"],
@@ -59,7 +59,7 @@ export const products: Product[] = [
     tagline: "Garment-dyed charcoal grey.",
     description:
       "Heavyweight cotton dyed down to a lived-in grey. Soft from day one, structured through the wash — offered plain or custom printed.",
-    price: 68,
+    price: 400,
     weightGsm: 280,
     printOptions: ["plain", "printed"],
     colors: ["Charcoal", "Slate"],

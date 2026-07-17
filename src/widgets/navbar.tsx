@@ -8,18 +8,21 @@ import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/t
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-function Logo() {
+function Logo({ className }: { className?: string }) {
   return (
     <Link
       href="/"
       aria-label={`${site.name} home`}
-      className="relative flex size-10 shrink-0 overflow-hidden rounded-full border border-line bg-surface"
+      className={cn(
+        "relative flex size-10 shrink-0 overflow-hidden rounded-full border border-line bg-surface sm:size-11",
+        className
+      )}
     >
       <Image
         src={site.logoSrc}
         alt={site.shortName}
-        width={40}
-        height={40}
+        width={44}
+        height={44}
         className="object-cover"
         priority
       />
@@ -32,8 +35,22 @@ export function Navbar() {
 
   return (
     <header className="relative z-20 border-b border-line">
-      <nav className="flex items-center justify-between px-5 py-4 sm:px-8">
-        {/* Left: desktop links */}
+      <nav className="flex items-center justify-between gap-3 px-5 py-4 sm:px-8">
+        {/* Mobile: menu + logo grouped on the left */}
+        <div className="flex flex-1 items-center gap-3 md:hidden">
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            className="flex items-center justify-center text-ink"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+          <Logo />
+        </div>
+
+        {/* Desktop: text links left */}
         <div className="hidden flex-1 items-center gap-7 md:flex">
           {site.nav.map((item) => (
             <Link
@@ -46,23 +63,12 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Left: mobile toggle */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          className="flex items-center justify-center text-ink md:hidden"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
-
-        {/* Center: logo */}
-        <div className="flex flex-1 justify-center">
+        {/* Desktop: centered logo */}
+        <div className="hidden flex-1 justify-center md:flex">
           <Logo />
         </div>
 
-        {/* Right: inquiry + theme toggle */}
+        {/* Right: inquiry (sm+) + theme */}
         <div className="flex flex-1 items-center justify-end gap-3 sm:gap-5">
           <a
             href={`mailto:${site.email}?subject=${encodeURIComponent("Inquiry — AURA: image of God")}`}
@@ -79,7 +85,6 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile drawer */}
       <div
         className={cn(
           "grid overflow-hidden border-t border-line transition-all duration-300 md:hidden",
@@ -101,7 +106,7 @@ export function Navbar() {
             <a
               href={`mailto:${site.email}?subject=${encodeURIComponent("Inquiry — AURA: image of God")}`}
               onClick={() => setOpen(false)}
-              className="py-2 text-sm font-semibold uppercase tracking-widest text-ink sm:hidden"
+              className="py-2 text-sm font-semibold uppercase tracking-widest text-ink"
             >
               Send Inquiry
             </a>

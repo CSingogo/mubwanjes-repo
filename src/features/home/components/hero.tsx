@@ -20,12 +20,10 @@ function HeroMediaFallback() {
 
 export function Hero() {
   return (
-    <section className="px-5 pt-10 pb-4 sm:px-8 sm:pt-16">
-      <h1 className="display max-w-4xl text-[13vw] leading-[0.95] text-ink sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-        Sculpted for those{" "}
-        <span className="text-ink">
-          <RotatingText words={ROTATING} className="text-accent" />
-        </span>
+    <section className="overflow-x-clip px-5 pt-10 pb-4 sm:px-8 sm:pt-16">
+      <h1 className="display max-w-4xl text-[clamp(2rem,8.5vw,5.25rem)] leading-[1] text-ink">
+        <span className="block">Sculpted for those</span>
+        <RotatingText words={ROTATING} className="block text-accent" />
       </h1>
 
       <div className="mt-8 sm:mt-12">

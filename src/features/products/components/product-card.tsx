@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AppImage } from "@/components/ui/app-image";
 import type { Product } from "@/features/products/types";
 import { imageUrl } from "@/lib/cloudinary";
+import { formatPrice } from "@/lib/format";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
@@ -24,7 +25,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="flex flex-col gap-1 p-4">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold text-ink">{product.name}</h3>
-          <span className="text-sm text-ink">${product.price}</span>
+          <span className="text-sm text-ink">{formatPrice(product.price)}</span>
         </div>
         <p className="text-xs text-ink-muted">{product.tagline}</p>
       </div>

@@ -52,13 +52,13 @@ export function Footer() {
           <Link
             href="/"
             aria-label={`${site.name} home`}
-            className="relative flex size-10 overflow-hidden rounded-full border border-white/70"
+            className="relative flex size-12 overflow-hidden rounded-full border border-white/70"
           >
             <Image
               src={site.logoSrc}
               alt={site.shortName}
-              width={40}
-              height={40}
+              width={48}
+              height={48}
               className="object-cover"
             />
           </Link>
