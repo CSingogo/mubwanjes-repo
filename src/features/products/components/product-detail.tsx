@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { AppImage } from "@/components/ui/app-image";
+import { InquiryLink } from "@/components/ui/inquiry-link";
 import type { Product } from "@/features/products/types";
 import { imageUrl } from "@/lib/cloudinary";
 import { formatPrice } from "@/lib/format";
@@ -12,11 +13,8 @@ function toTitle(value: string) {
 
 export function ProductDetail({ product }: { product: Product }) {
   const gallery = product.gallery.length ? product.gallery : [product.imageId];
-  const inquiry = `mailto:${site.email}?subject=${encodeURIComponent(
-    `Inquiry: ${product.name}`
-  )}&body=${encodeURIComponent(
-    `Hi ${site.name}, I'm interested in the ${product.name}. Please share availability, sizing and lead time.`
-  )}`;
+  const subject = `Inquiry - ${product.name}`;
+  const body = `Hi ${site.name}, I'm interested in the ${product.name}. Please share availability, sizing and lead time.`;
 
   return (
     <div className="px-5 py-10 sm:px-8 sm:py-14">
@@ -129,15 +127,25 @@ export function ProductDetail({ product }: { product: Product }) {
 
           {/* CTA — made-to-order, no cart */}
           <div className="mt-8 flex flex-col gap-3">
-            <a
-              href={inquiry}
+            <InquiryLink
+              preferGmail
+              subject={subject}
+              body={body}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-4 text-sm font-semibold uppercase tracking-widest text-surface transition-colors hover:bg-ink/85"
             >
               Send Inquiry
               <ArrowUpRight size={16} />
-            </a>
+            </InquiryLink>
             <p className="text-center text-xs text-ink-muted">
-              Made to order · plain or custom printed · crafted per piece
+              Or email{" "}
+              <a
+                href={`mailto:${site.email}`}
+                className="underline underline-offset-2 hover:text-ink"
+              >
+                {site.email}
+              </a>
+              {" · "}
+              made to order
             </p>
           </div>
         </div>

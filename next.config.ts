@@ -2,13 +2,9 @@ import type { NextConfig } from "next";
 
 /**
  * Static export for GitHub Pages (and any static host).
- * Cloudinary handles image/video transforms — Next Image uses unoptimized
- * so build does not need a Node image optimizer (required for `output: "export"`).
+ * Cloudinary handles product/campaign media; the brand logo stays in /public.
  *
- * For project pages (username.github.io/repo-name), set in CI:
- *   GITHUB_PAGES=true
- * Or locally:
- *   NEXT_PUBLIC_BASE_PATH=/your-repo-name
+ * Project Pages URL: https://USER.github.io/REPO → basePath = /REPO
  */
 const basePath =
   process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") ||
@@ -19,6 +15,11 @@ const basePath =
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
+  // Expose base path to client code (logo, etc.) — next/image alone is not enough
+  // for every case when unoptimized + static export.
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   ...(basePath
     ? {
         basePath,

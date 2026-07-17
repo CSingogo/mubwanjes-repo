@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { AppImage } from "@/components/ui/app-image";
+import { InquiryLink } from "@/components/ui/inquiry-link";
 import { media } from "@/data/media";
 import { site } from "@/lib/site";
 import { imageUrl } from "@/lib/cloudinary";
@@ -40,12 +41,12 @@ export function Footer() {
               {item.label}
             </Link>
           ))}
-          <a
-            href={`mailto:${site.email}?subject=${encodeURIComponent("Inquiry — AURA: image of God")}`}
+          <InquiryLink
+            preferGmail
             className="transition-opacity hover:opacity-70"
           >
             Send Inquiry
-          </a>
+          </InquiryLink>
         </nav>
 
         <div className="flex flex-col items-center gap-4 text-center">

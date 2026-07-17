@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
+import { InquiryLink } from "@/components/ui/inquiry-link";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +37,6 @@ export function Navbar() {
   return (
     <header className="relative z-20 border-b border-line">
       <nav className="flex items-center justify-between gap-3 px-5 py-4 sm:px-8">
-        {/* Mobile: menu + logo grouped on the left */}
         <div className="flex flex-1 items-center gap-3 md:hidden">
           <button
             type="button"
@@ -50,7 +50,6 @@ export function Navbar() {
           <Logo />
         </div>
 
-        {/* Desktop: text links left */}
         <div className="hidden flex-1 items-center gap-7 md:flex">
           {site.nav.map((item) => (
             <Link
@@ -63,19 +62,17 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Desktop: centered logo */}
         <div className="hidden flex-1 justify-center md:flex">
           <Logo />
         </div>
 
-        {/* Right: inquiry (sm+) + theme */}
         <div className="flex flex-1 items-center justify-end gap-3 sm:gap-5">
-          <a
-            href={`mailto:${site.email}?subject=${encodeURIComponent("Inquiry — AURA: image of God")}`}
+          <InquiryLink
+            preferGmail
             className="hidden text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:text-ink-muted sm:inline"
           >
             Send Inquiry
-          </a>
+          </InquiryLink>
           <ThemeTogglerButton
             variant="outline"
             size="default"
@@ -103,13 +100,13 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href={`mailto:${site.email}?subject=${encodeURIComponent("Inquiry — AURA: image of God")}`}
+            <InquiryLink
+              preferGmail
               onClick={() => setOpen(false)}
               className="py-2 text-sm font-semibold uppercase tracking-widest text-ink"
             >
               Send Inquiry
-            </a>
+            </InquiryLink>
           </div>
         </div>
       </div>
