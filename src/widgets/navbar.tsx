@@ -9,24 +9,39 @@ import { InquiryLink } from "@/components/ui/inquiry-link";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-function Logo({ className }: { className?: string }) {
+function Logo({
+  className,
+  withWordmark = false,
+}: {
+  className?: string;
+  withWordmark?: boolean;
+}) {
   return (
     <Link
       href="/"
       aria-label={`${site.name} home`}
-      className={cn(
-        "relative flex size-10 shrink-0 overflow-hidden rounded-full border border-line bg-surface sm:size-11",
-        className
-      )}
+      className={cn("flex shrink-0 items-center gap-2.5", className)}
     >
-      <Image
-        src={site.logoSrc}
-        alt={site.shortName}
-        width={44}
-        height={44}
-        className="object-cover"
-        priority
-      />
+      <span className="relative flex size-10 shrink-0 overflow-hidden rounded-full border border-line bg-surface sm:size-11">
+        <Image
+          src={site.logoSrc}
+          alt={site.shortName}
+          width={44}
+          height={44}
+          className="object-cover"
+          priority
+        />
+      </span>
+      {withWordmark && (
+        <span className="flex flex-col leading-none">
+          <span className="text-sm font-extrabold uppercase tracking-[0.3em] text-ink">
+            AURA
+          </span>
+          <span className="mt-1 text-[0.55rem] font-semibold uppercase tracking-[0.24em] text-accent">
+            Image of God
+          </span>
+        </span>
+      )}
     </Link>
   );
 }
@@ -47,7 +62,7 @@ export function Navbar() {
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
-          <Logo />
+          <Logo withWordmark />
         </div>
 
         <div className="hidden flex-1 items-center gap-7 md:flex">
@@ -63,7 +78,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden flex-1 justify-center md:flex">
-          <Logo />
+          <Logo withWordmark />
         </div>
 
         <div className="flex flex-1 items-center justify-end gap-3 sm:gap-5">
